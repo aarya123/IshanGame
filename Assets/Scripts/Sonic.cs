@@ -5,7 +5,6 @@ public class Sonic : MonoBehaviour {
 	public int directionX;
 	public int speed;
 	public Transform edge;
-	public LayerMask wallLayer;
 	public bool DEBUG;
 	Animator animator;
 
@@ -32,7 +31,7 @@ public class Sonic : MonoBehaviour {
 			}
 			rigidbody2D.velocity = new Vector2 (velocityX * speed, velocityY*speed);
 		} else {
-			RaycastHit2D hitInfo = Physics2D.Linecast (rigidbody2D.position, edge.position, wallLayer);
+			RaycastHit2D hitInfo = Physics2D.Linecast (rigidbody2D.position, edge.position, 1<<LayerMask.NameToLayer("Wall"));
 			if (hitInfo.collider != null) {
 				directionX = -directionX;
 				transform.Rotate (new Vector3 (0f, 180f, 0f));
