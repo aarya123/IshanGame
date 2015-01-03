@@ -15,6 +15,7 @@ public class Elevator : MonoBehaviour {
 	[SerializeField]
 	bool hasPlayer;
 	Rigidbody2D player;
+
 	void Start () {
 		startVect = transform.position;
 		endVect = new Vector3 (startVect.x+deltaX, startVect.y+deltaY, startVect.z);
@@ -35,7 +36,6 @@ public class Elevator : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D coll) {
 		if (coll.gameObject.tag == "Player"&&Vector2.Dot(coll.contacts [0].normal,Vector2.right) == 0) {
 			//coll.transform.parent=transform;
-			Debug.Log("Hit!");
 			player=coll.gameObject.rigidbody2D;
 			hasPlayer=true;
 		}
