@@ -19,6 +19,7 @@ public class Sonic : MonoBehaviour {
 				start=false;
 			} else{
 				directionX = -directionX;
+				transform.Rotate(new Vector3(0f,180f,0f));
 			}
 		}
 		rigidbody2D.velocity = new Vector2 (directionX * speed, rigidbody2D.velocity.y);
