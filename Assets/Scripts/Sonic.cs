@@ -4,7 +4,8 @@ using System.Collections;
 public class Sonic : MonoBehaviour {
 	public int directionX;
 	public int speed;
-	bool start=true;
+	public Transform edge;
+	public LayerMask wallLayer;
 	Animator animator;
 
 	void Start () {
@@ -12,15 +13,10 @@ public class Sonic : MonoBehaviour {
 	}
 
 	void Update () {
-
-		//RaycastHit2D hitInfo=Physics2D.Raycast(rigidbody2D.position,new Vector2(Vector2.right*directionX,0f);
-		if (rigidbody2D.velocity.x == 0) {
-			if(start){
-				start=false;
-			} else{
-				directionX = -directionX;
-				transform.Rotate(new Vector3(0f,180f,0f));
-			}
+		RaycastHit2D hitInfo=Physics2D.Linecast(rigidbody2D.position,edge.position,wallLayer);
+		if (hitInfo.collider != null) {
+			directionX = -directionX;
+			transform.Rotate(new Vector3(0f,180f,0f));
 		}
 		rigidbody2D.velocity = new Vector2 (directionX * speed, rigidbody2D.velocity.y);
 		animator.SetFloat ("SpeedX",Mathf.Abs(rigidbody2D.velocity.x));
