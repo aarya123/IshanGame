@@ -7,6 +7,7 @@ public class Portals : MonoBehaviour
 		public Transform otherPortal;
 		bool deferTeleport;
 		bool portalsActive;
+		public Animator animator;
 
 
 		void OnTriggerStay2D (Collider2D other)
@@ -33,6 +34,15 @@ public class Portals : MonoBehaviour
 		public void triggerPortals ()
 		{
 				portalsActive = !portalsActive;
+		}
+
+		void Start(){
+			animator = GetComponent<Animator> ();
+		}
+
+		void Update(){
+			
+			animator.SetBool ("State", portalsActive);
 		}
 	
 }
