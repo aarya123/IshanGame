@@ -48,4 +48,9 @@ public class Elevator : MonoBehaviour {
 			hasPlayer=false;
 		}
 	}
+
+	void removePlayerReference(){
+		hasPlayer = false;
+		player = null;
+	}
 }

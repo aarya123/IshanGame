@@ -10,6 +10,7 @@ public class OneWayTrigger : MonoBehaviour {
 	}
 	
 	void OnTriggerExit2D(Collider2D other) {
-		elevator.enabled=true;   
+		elevator.enabled=true;
+		elevator.gameObject.SendMessage("removePlayerReference");
 	}
 }
