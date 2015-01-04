@@ -9,13 +9,10 @@ public class Button : MonoBehaviour {
 
 	void OnTriggerStay2D(Collider2D other) {
 		if (other.gameObject.tag == "Player") {
-
 			if(notRotated){
 				bridgeMove.Rotate(new Vector3(0f, 0f, 90f));
 				notRotated = false;
-			}
-			else{
-
+				GetComponent<SpriteRenderer>().sprite=null;
 			}
 		}
 	}
