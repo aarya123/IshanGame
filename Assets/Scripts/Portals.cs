@@ -7,7 +7,8 @@ public class Portals : MonoBehaviour
 		public Transform otherPortal;
 		bool deferTeleport;
 		bool portalsActive;
-	
+
+
 		void OnTriggerStay2D (Collider2D other)
 		{
 				if (portalsActive && other.gameObject.tag == "Player" && !deferTeleport) {
@@ -33,4 +34,5 @@ public class Portals : MonoBehaviour
 		{
 				portalsActive = !portalsActive;
 		}
+	
 }

@@ -7,6 +7,7 @@ public class Trampoline : MonoBehaviour
     public float velocityX;
     public float velocityY;
     bool trampolineActive;
+	public Animator animator;
 
     void OnTriggerStay2D(Collider2D other)
     {
@@ -21,4 +22,12 @@ public class Trampoline : MonoBehaviour
     {
         trampolineActive = !trampolineActive;
     }
+
+	void Start () {
+		//animator = GetComponent<Animator> ();
+	}
+	
+	void Update(){
+		animator.SetBool ("State", trampolineActive);
+	}
 }
